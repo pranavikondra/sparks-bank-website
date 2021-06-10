@@ -17,7 +17,7 @@ var transferhistoryController = require('./controllers/transferhistory')
 
 
 mongoose
-  .connect("mongodb://localhost/bank", { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect("mongodb+srv://admin:aditya@004@sparksinternshipbank.jbegy.mongodb.net/bank?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB..."))
   .catch(err => console.error("Could not connect to MongoDB...", err));
 
