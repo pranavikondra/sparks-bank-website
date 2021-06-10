@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="SHORTCUT ICON" href="https://bit.ly/3zaWTel"/>
+    <title>Basic Banking System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      .justify-content-end > .nav-item > a {
+       color: black;
+      }
+    </style>
+</head>
+<body style="background-color:lightblue;"> 
+ <nav class="navbar navbar-colour-dark">
+    <span class="navbar-brand mb-0 ml-3"><b><i>Sparks Bank</i></b></span>
+         <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/transfermoney">View Customers</a>
+              </li>
+            <li class="nav-item">
+                  <a class="nav-link" href="/history">Transaction History</a>
+              </li> 
+         </ul>
+  </nav>
+ <div class="container">
+    <div class="row mt-3">
+      <div class=" col ml-13">
+        <h4><i><u>Customers List</u></i></h4>
+      </div>
+      <div>
+       <button type="button" class="btn btn-dark col" data-toggle="modal" data-target="#exampleModalCenter">
+       Transfer Money</button>
+      </div>
+    </div>
+    <div class="container mt-3">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Sno.</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">EmailId</th>
+            <th scope="col">Accno</th>
+            <th scope="col">Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+            @each(res in resp)
+            <tr>
+            <th scope="row">{{res.uid}}</th>
+            <td>{{res.name}}</td>
+            <td>{{res.em}}</td>
+            <td>{{res.accno}}</td>
+            <td>{{res.balance}}</td>
+          </tr>
+          @endeach
+        </tbody>
+       
+   </table> 
+      <!-- Button trigger modal -->
+ <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+ </div>
+  
+    <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header position:center">
+          <h5 class="modal-title" id="exampleModalLongTitle">Transfer Money</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+       
+
+        <div class="modal-body">
+            <form action="/transaction/activity" method="POST" encType="multipart/form-data">
+                <div class="form-group">
+            <div class="row justify-content-around">
+                <div class="col-5">
+                    <select class="custom-select" name="fromuid" id="input1">
+                        <option selected value="0">Choose Sender</option>
+                         @each(res in resp)
+                         <option value="{{res.uid}}">{{res.name}}</option>
+
+                        @endeach
+                     </select>
+                 </div>
+
+                  <p>to</p>
+                 <div class="col-5">
+                    <select class="custom-select" name="touid">
+                        <option selected  value="0">Choose Recipient</option>
+                        @each(res in resp)
+                        <option value="{{res.uid}}">{{res.name}}</option>
+                  @endeach
+                      </select>
+                </div>
+           </div>
+                </div>
+                <div class="form-group">
+              <div class="row justify-content-start">
+                <div class="col-4">
+                    <label for="exampleInput">Amount</label>
+                </div>
+                <div class="col-4">
+                    <input type="text" name="amount">
+                </div>
+              </div>
+                </div>
+            </div>
+             <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <button class="btn btn-primary" >Confirm</button>
+             </div>
+             </form>
+         </div>
+     </div>
+  </div>
+ </div>
+
+  <footer class="page-footer font-small ">
+         <div class="footer-copyright text-center py-3">© 2021Copyright:All Rights Reserved
+            <a><br>K Pranavi,The Sparks Foundation </a>
+        </div>
+  </footer>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

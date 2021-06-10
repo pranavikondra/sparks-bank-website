@@ -1,0 +1,34 @@
+{
+  "name": "myapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.18.3",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "~1.4.4",
+    "edge.js": "^5.2.1",
+    "async": "^3.2.0",
+    "debug": "~2.6.9",
+    "bcrypt": "^3.0.7",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "cryptr": "^6.0.1",
+    "express": "~4.16.1",
+    "express-edge": "^2.0.2",
+    "express-generator": "^4.16.1",
+    "express-session": "^1.17.2",
+    "formidable": "^1.2.2",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mongoose": "^5.12.12",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
