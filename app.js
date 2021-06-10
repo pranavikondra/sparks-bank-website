@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 const expressEdge = require('express-edge');
 
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -40,6 +41,7 @@ app.use('/', indexController);
 app.use('/transfermoney', transferMoneyController);
 app.post('/transaction/activity', sendmoneyController);
 app.get('/history', transferhistoryController);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
