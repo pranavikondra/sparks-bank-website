@@ -9,26 +9,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <style>
-      .justify-content-end > .nav-item > a {
-       color: black;
-      }
-    </style>
+    
 </head>
 <body style="background-color:lightblue;"> 
- <nav class="navbar navbar-colour-dark">
-    <span class="navbar-brand mb-0 ml-3"><b><i>Sparks Bank</i></b></span>
-         <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
-              </li>
-            <li class="nav-item">
-                <a class="nav-link " href="/transfermoney">View Customers</a>
-              </li>
-            <li class="nav-item">
-                  <a class="nav-link" href="/history">Transaction History</a>
-              </li> 
+  <nav class="navbar navbar-expand-lg navbar-light bg-$grey">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0  ml-2 h1"><b><i>Sparks Bank</i></b></span>
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item mr-3">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mr-3" href="/transfermoney">View Customers</a>
+          </li>
+          <li class="nav-item mr-2">
+            <a class="nav-link" href="/history">Transaction History</a>
+          </li>
          </ul>
+      </div>
+    </div>
   </nav>
  <div class="container">
     <div class="row mt-3">
@@ -142,6 +146,7 @@
  </div>
 
   <footer class="page-footer font-small ">
+    
          <div class="footer-copyright text-center py-3">© 2021Copyright:All Rights Reserved
             <a><br>K Pranavi,The Sparks Foundation </a>
         </div>
