@@ -4,13 +4,13 @@ const Activity = require("../db/models/Activity");
 const User = require('./../db/models/User')
 const formidable = require('formidable');
 
-module.exports = async (req, res) => {
+module.exports = async(req, res) => {
     try {
         var names;
 
 
         var form = new formidable.IncomingForm();
-        form.parse(req, async function (err, fields, files) {
+        form.parse(req, async function(err, fields, files) {
             if (err) {
                 console.log("err:", err);
             }
@@ -27,39 +27,30 @@ module.exports = async (req, res) => {
                         res.render('transactionhistory', {
                             notsame
                         })
-                    }
-                    else {
+                    } else {
                         var transfermoneyto = await Activity.create({
-                            fromuid: fields.fromuid,
-                            touid: fields.touid,
-                            amount: fields.amount,
-                            fromname: getfromuseramount.name,
-                            toname: gettouseramount.name
-                        })
-                        // names = transfermoneyto
+                                fromuid: fields.fromuid,
+                                touid: fields.touid,
+                                amount: fields.amount,
+                                fromname: getfromuseramount.name,
+                                toname: gettouseramount.name
+                            })
+                            // names = transfermoneyto
                         names = transfermoneyto;
 
                         getfromuseramount.balance = getfromuseramount.balance - fields.amount;
-                        let updated = await User.findOneAndUpdate(
-                            { uid: fromuid },
-                            { ...getfromuseramount },
-                            { new: true }
-                        );
+                        let updated = await User.findOneAndUpdate({ uid: fromuid }, {...getfromuseramount }, { new: true });
                         gettouseramount.balance = parseInt(gettouseramount.balance) + parseInt(fields.amount);
-                        let updated2 = await User.findOneAndUpdate(
-                            { uid: touid },
-                            { ...gettouseramount },
-                            { new: true }
-                        );
+                        let updated2 = await User.findOneAndUpdate({ uid: touid }, {...gettouseramount }, { new: true });
 
                         let resp = await User.find();
 
                         res.render('transactionhistory', {
-                            names, resp
+                            names,
+                            resp
                         });
                     }
-                }
-                else {
+                } else {
                     let unsuccess = true
                     res.render('transactionhistory', {
                         unsuccess
@@ -69,10 +60,7 @@ module.exports = async (req, res) => {
             }
         });
 
-    }
-    catch (error) {
+    } catch (error) {
         throw error
     }
 }
-
-

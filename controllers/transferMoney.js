@@ -4,13 +4,11 @@ const User = require('./../db/models/User')
 
 try {
 
-    router.get('/', async (req, res, next) => {
-
+    router.get('/', async(req, res, next) => {
         let resp = await User.find();
         res.render('transfermoney', {
             resp
         })
-        // };
     });
 } catch (error) {
     throw error
