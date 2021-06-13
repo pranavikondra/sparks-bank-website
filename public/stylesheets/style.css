@@ -1,8 +1,36 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.main {
+    text-align: left;
+    width: 1000px;
+    padding: 150px;
 }
 
-a {
-  color: #00B7FF;
+body {
+    background-image: url('bank-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    background-position: center;
+    background-color: powderblue;
+    /* height: 100vh; */
+}
+
+@media handheld,
+only screen and (max-width: 1000px) {
+    .main {
+        display: inline-block;
+        padding: 70px 0;
+        height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        width: 100%;
+        padding: 150px;
+    }
+    body {
+        background-image: url('bank-bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        background-position: center;
+        height: 100vh;
+    }
 }
